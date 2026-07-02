@@ -1,0 +1,13 @@
+Day 1
+- Installation 
+- Bazel 9 requires loading cc_binary from rules_cc.
+- rules_cc must be declared with bazel_dep().
+- bazel run builds automatically if sources changed.
+- Bazel uses action caching to avoid unnecessary recompilation.
+- MODULE.bazel replaces the older WORKSPACE approach for dependency management.
+- Created a repo bazel-work on codesavvy-labs
+- notes.md (this file) created.
+- README.md created
+- Day 2 todos 
+    - Installation need to consult Bazel docs to document how to install. Was complicated IMO.
+    - Create a C++ program with libraries and include files.
