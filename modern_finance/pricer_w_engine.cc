@@ -43,7 +43,7 @@ int main() {
         MonteCarloEngine<std::mt19937, std::normal_distribution<double>, OptionSim> 
             mc_engine(generator, distribution, option_sim);
         
-        double presentValue = mc_engine.Run(t_paths);
+        auto presentValue = mc_engine.Run(t_paths);
 
         auto te = std::chrono::steady_clock::now();
         

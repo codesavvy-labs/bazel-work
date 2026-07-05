@@ -12,12 +12,12 @@ public:
         return distribution_(generator_);
     }
     
-    double Run(std::uint64_t t_paths) {
+    auto Run(std::uint64_t t_paths) {
         simulation_.configure(t_paths);
         for (std::uint64_t i = 0; i < t_paths; ++i) {
            simulation_.process_sample(sample());
         }
-        return simulation_.output_value();  
+        return simulation_.results();
     }
 private:
     Generator generator_;

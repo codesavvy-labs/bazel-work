@@ -19,7 +19,7 @@ public:
 
     OptionSim(const OptionSimParams& params) : 
         params_(params), drift_(0.0), diffusion_(0.0),sum_payoffs_(0.0), t_paths_(0) {}
-    double output_value();
+    double results();
     void configure(std::uint64_t t_paths);
     void process_sample(double sample);
 
