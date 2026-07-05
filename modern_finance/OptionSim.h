@@ -18,9 +18,9 @@ public:
     } OptionSimParams;
 
     OptionSim(const OptionSimParams& params) : 
-        params_(params), drift_(0.0), diffusion_(0.0),sum_payoffs_(0.0) {}
-    double output_value(uint64_t t_paths);
-    void configure();
+        params_(params), drift_(0.0), diffusion_(0.0),sum_payoffs_(0.0), t_paths_(0) {}
+    double output_value();
+    void configure(std::uint64_t t_paths);
     void process_sample(double sample);
 
 private:
@@ -28,4 +28,5 @@ private:
     double drift_;
     double diffusion_;
     double sum_payoffs_;
+    std::uint64_t t_paths_;
 };

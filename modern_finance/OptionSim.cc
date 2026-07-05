@@ -1,10 +1,11 @@
     #include "OptionSim.h"
-    void OptionSim::configure() {
+    void OptionSim::configure(std::uint64_t t_paths) {
         drift_ = (params_.discountRate - 0.5 * params_.volatility * params_.volatility) * params_.timeToMaturity;
         diffusion_ = params_.volatility * std::sqrt(params_.timeToMaturity);
+        t_paths_ = t_paths;
     }
-    double OptionSim::output_value(std::uint64_t t_paths) {
-        double averagePayoff = sum_payoffs_ / static_cast<double>(t_paths);
+    double OptionSim::output_value() {
+        double averagePayoff = sum_payoffs_ / static_cast<double>(t_paths_);
         double discountFactor = std::exp(-params_.discountRate * params_.timeToMaturity);
         return averagePayoff * discountFactor;
     }
