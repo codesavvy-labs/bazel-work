@@ -14,18 +14,15 @@ public:
         double discountRate;
         double volatility;
         double timeToMaturity;
-        std::uint64_t t_paths;
         std::function<double(double)> compute_value;
     } OptionSimParams;
 
     OptionSim(const OptionSimParams& params) : 
         params_(params), drift_(0.0), diffusion_(0.0),sum_payoffs_(0.0) {}
-    double apply(double simulatedSpot);
-    double accumulate(double payoff);
-    double output_value();
+    double output_value(uint64_t t_paths);
     void configure();
-    double update(double sample);
-    std::uint64_t get_t_paths() const;
+    void process_sample(double sample);
+
 private:
     OptionSimParams params_;
     double drift_;

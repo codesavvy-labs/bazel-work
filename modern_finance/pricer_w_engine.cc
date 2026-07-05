@@ -34,7 +34,6 @@ int main() {
             discountRate,
             volatility,
             timeToMaturity,
-            t_paths,
             payoffFunction // seed for reproducibility
         };
 
@@ -43,8 +42,8 @@ int main() {
         std::normal_distribution<double> distribution(0.0, 1.0);
         MonteCarloEngine<std::mt19937, std::normal_distribution<double>, OptionSim> 
             mc_engine(generator, distribution, option_sim);
- 
-        double presentValue = mc_engine.Run();
+        
+        double presentValue = mc_engine.Run(t_paths);
 
         auto te = std::chrono::steady_clock::now();
         
