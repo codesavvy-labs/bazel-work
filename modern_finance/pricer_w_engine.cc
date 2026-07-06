@@ -38,12 +38,12 @@ int main() {
         };
 
         OptionSim option_sim(params);
-        std::mt19937 generator(1337); // Seed for reproducibility
-        std::normal_distribution<double> distribution(0.0, 1.0);
-        MonteCarloEngine<std::mt19937, std::normal_distribution<double>, OptionSim> 
-            mc_engine(generator, distribution, option_sim);
-        
-        auto presentValue = mc_engine.Run(t_paths);
+
+        std::random_device rd;
+        auto seed = rd();
+        std::mt19937 generator(seed);
+ 
+        auto presentValue = RunMonteCarlo(option_sim, generator, t_paths);
 
         auto te = std::chrono::steady_clock::now();
         
